@@ -1,0 +1,282 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="./img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Records - Fresh Buys
+  </title>
+  <!--  Fonts and icons     -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <!-- CSS Files -->
+  <link href="./css/style.css" rel="stylesheet" />
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <style type="text/css">
+
+    @media screen {
+    #printSection {
+        display: none;
+    }
+    }
+    @media print {
+    body * {
+        visibility:hidden;
+    }
+    #printSection, #printSection * {
+        visibility:visible;
+        font-size: 15pt;
+    }
+    #printSection {
+        position:absolute;
+        width: 90%;
+        left:5%;
+        top:10%;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="mobile-bottom-nav">
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <a href="index.html"><i class="material-icons">home</i>
+          Home </a>
+        </div>    
+      </div>
+      <div class="mobile-bottom-nav__item">   
+        <div class="mobile-bottom-nav__item-content">
+          <a href="orders.html"><i class="material-icons">add_shopping_cart</i>
+          Place Order </a>
+        </div>
+      </div>
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <a href="records.html" class="router-link-exact-active"><i class="material-icons">list_alt</i>
+          Records </a>
+        </div>    
+      </div>
+      
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <i class="material-icons">pin_drop</i>
+          Track Order
+        </div>    
+      </div>
+    </nav>
+
+    <nav class="main-nav">
+      <a href="index.html"> <img class="print" src="./img/freshbuys-logo.png"> </a>
+      <ul>
+        <li><a href="index.html">Home </a></li>
+        <li><a href="orders.html">Place Order </a></li>
+        <li><a href="records.html" class="router-link-exact-active">Records </a></li>
+        <li><a href="#" >Track Order </a></li>
+      </ul>
+      <div class="user-profile">
+        <a href="#"> <img src="./img/jerry.jpg"> </a>
+      </div>
+    </nav>
+
+    
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="col-md-12">
+        <div class=" d-inline-block title-header">
+          <h3 class="mb-3"> Records </h3>
+        </div>
+        <div  class="d-inline-block sort-table">
+            <span id="sort"> Viewing 1 - 10 of 15 
+              <button class="btn btn-next"> <i class="material-icons">keyboard_arrow_left </i> </button>
+              <button class="btn btn-prev"><i class="material-icons">keyboard_arrow_right </i> </button>
+            </span>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col" class="w-25">Delivery Address</th>
+                <th scope="col">Total</th>
+                <th scope="col">Payment Method</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" data-title="ID">00001</th>
+                <td data-title="Date:">June 6, 2020</td>
+                <td data-title="Customer Name:">Juan Dela Cruz</td>
+                <td data-title="Delivery Address:">Baguio City</td>
+                <td data-title="Total: "><span>₱</span> 50,000</td>
+                <td data-title="Payment Method: ">Cash On Delivery</td>
+                <td data-title="Status: "><span class="stat bg-agent"> Waiting for Agent's Call </span></td>
+                <td data-title="Actions:" class="text-right"><a href="#"><span data-toggle="modal" data-target="#details" class="material-icons">visibility</span></a></td>
+              </tr>
+              <tr>
+                <th scope="row" data-title="ID">00002</th>
+                <td data-title="Date:">June 6, 2020</td>
+                <td data-title="Customer Name:">Juan Dela Cruz</td>
+                <td data-title="Delivery Address:">Baguio City</td>
+                <td data-title="Total: "><span>₱</span> 50,000</td>
+                <td data-title="Payment Method: ">Cash On Delivery</td>
+                <td data-title="Status: "><span class="stat bg-cancelled"> Cancelled </span></td>
+                <td data-title="Actions:" class="text-right"><a href="#"><span data-toggle="modal" data-target="#details" class="material-icons">visibility</span></a></td>
+              </tr>
+              <tr>
+                <th scope="row" data-title="ID">00003</th>
+                <td data-title="Date:">June 6, 2020</td>
+                <td data-title="Customer Name:">Juan Dela Cruz</td>
+                <td data-title="Delivery Address:">Baguio City</td>
+                <td data-title="Total: "><span>₱</span> 50,000</td>
+                <td data-title="Payment Method: ">Cash On Delivery</td>
+                <td data-title="Status: "><span class="stat bg-completed"> Completed </span></td>
+                <td data-title="Actions:" class="text-right"><a href="#" id="Print"><span class="material-icons">print</span></a><a href="#"><span data-toggle="modal" data-target="#details" class="material-icons">visibility</span></a></td>
+              </tr>
+              <tr>
+                <th scope="row" data-title="ID">00004</th>
+                <td data-title="Date:">June 6, 2020</td>
+                <td data-title="Customer Name:">Juan Dela Cruz</td>
+                <td data-title="Delivery Address:">Baguio City</td>
+                <td data-title="Total: "><span>₱</span> 50,000</td>
+                <td data-title="Payment Method: ">Cash On Delivery</td>
+                <td data-title="Status: "><span class="stat bg-processing"> Processing </span></td>
+                <td data-title="Actions:" class="text-right"><a href="#"><span data-toggle="modal" data-target="#details" class="material-icons">visibility</span></a></td>
+              </tr>
+              <tr>
+                <th scope="row" data-title="ID">00005</th>
+                <td data-title="Date:">June 6, 2020</td>
+                <td data-title="Customer Name:">Juan Dela Cruz</td>
+                <td data-title="Delivery Address:">3 Escoda St., Corner Naguilian Road, Quezon Hill, Baguio, 2600 Benguet</td>
+                <td data-title="Total: "><span>₱</span> 50,000</td>
+                <td data-title="Payment Method: ">Cash On Delivery</td>
+                <td data-title="Status: "><span class="stat bg-pending"> Waiting for Payment </span></td>
+                <td data-title="Actions:" class="text-right"><a href="#"><span data-toggle="modal" data-target="#payment_method" class="material-icons">payment</span><span data-toggle="modal" data-target="#details" class="material-icons">visibility</span></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+              <!-- Modal for payment -->
+              <div class="modal fade" id="payment_method" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <p class="modal-title text_subtitle" id="exampleModalLabel">Payment for Order No 65</p>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <input type="date" class="form-control" placeholder="Delivery Date">
+                      <select class="form-control margin_top" style="width:48%;float: left;">
+                      <option value="" disabled selected>Select Payment Method</option> 
+                      <option>Card</option>
+                      <option>Cash on Delivery</option>
+                      </select>
+                      <input style="width:48%;float: right" type="number" min="0.00" class="margin_top form-control" placeholder="0.00"><br><br>
+                      <input type="text" class="margin_top form-control" placeholder="Transaction Reference">
+                      <button type='Submit' class="btn btn-primary w-100 margin_top">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal for details -->
+              <div class="modal fade printable" id="details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content" id="printThis">
+                    <div class="modal-header">
+                      <p class="modal-title text_subtitle" id="exampleModalLabel" style="text-align: center;margin:0 auto;">
+                          <img src="./img/freshbuys-logo.png" style="width:50%;align-content: center;"><br>
+                          Order Details</p>
+                    </div>
+                    <div class="modal-body table">
+                      <h6>Delivery Date: June 6, 2020</h6>
+                      <div class="row">
+                        <div class="col">
+                          <span class="text_details">Customer Name:</span><br> Juan Dela Cruz<br>
+                          <span class="text_details">Contact:</span><br> 09123456666<br>
+                          <span class="text_details">Address:</span> <br>3 Escoda St., Corner Naguilian Road, Quezon Hill, Baguio, 2600 Benguet<br>
+                        </div>
+                        <div class="col">
+                          <span class="text_details">Shipping Method:</span><br>lalamove<br>
+                          <span class="text_details">Payment Method: </span><br>Cash on Delivery<br>
+                          <span class="text_details">Status:</span><br> Waiting for Payment<br>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <table class="table" style="margin:3%; padding: 2%;">
+                          <thead>
+                          <tr class="card-header">
+                            <th>Item</th>
+                            <th>Unit</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                          </tr>
+                          </thead>
+                          <tr>
+                            <td>Baguio Kimchi Premium</td>
+                            <td>500g(0.50kg)</td>
+                            <td>2</td>
+                            <td>600</td>
+                          </tr>
+                          <tr>
+                            <td>Classic French Roast(Dark) </td>
+                            <td>250g(0.25kg)</td>
+                            <td>2</td>
+                            <td>390</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4" style="text-align: right;"><h6>Total: 990</h6></td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    </div>
+  </main>
+
+</body>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script type="text/javascript">document.getElementById("media_pdf").style.visibility = "hidden";</script>
+  <script src='./js/vue.js'></script>
+  <script type="text/javascript">
+    document.getElementById("Print").onclick = function () {
+    printElement(document.getElementById("printThis"));
+    };
+
+    function printElement(elem) {
+        var domClone = elem.cloneNode(true);
+
+        var $printSection = document.getElementById("printSection");
+
+        if (!$printSection) {
+            var $printSection = document.createElement("div");
+            $printSection.id = "printSection";
+            document.body.appendChild($printSection);
+        }
+
+        $printSection.innerHTML = "";
+        $printSection.appendChild(domClone);
+        window.print();
+    }
+  </script>
+
+</html>

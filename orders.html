@@ -1,0 +1,207 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="./img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Orders - Fresh Buys
+  </title>
+  <!--  Fonts and icons     -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <!-- CSS Files -->
+  <link href="./css/style.css" rel="stylesheet" />
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <nav class="mobile-bottom-nav">
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <a href="index.html"><i class="material-icons">home</i>
+          Home </a>
+        </div>    
+      </div>
+      <div class="mobile-bottom-nav__item">   
+        <div class="mobile-bottom-nav__item-content">
+          <a href="orders.html" class="router-link-exact-active"><i class="material-icons">add_shopping_cart</i>
+          Place Order </a>
+        </div>
+      </div>
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <a href="records.html">
+          Records </a>
+        </div>    
+      </div>
+      
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <i class="material-icons">pin_drop</i>
+          Track Order
+        </div>    
+      </div>
+    </nav>
+
+    <nav class="main-nav">
+      <a href="index.html"> <img src="./img/freshbuys-logo.png"> </a>
+      <ul>
+        <li><a href="index.html">Home </a></li>
+        <li><a href="orders.html" class="router-link-exact-active">Place Order </a></li>
+        <li><a href="records.html">Records </a></li>
+        <li><a href="#" >Track Order </a></li>
+      </ul>
+      <div class="user-profile">
+        <a href="#"> <img src="./img/jerry.jpg"> </a>
+      </div>
+    </nav>
+
+    
+  </header>
+
+  <main>
+    <div class="container">
+    <div id="app">
+      <div class="col-md-12">
+        <div class=" d-inline-block title-header">
+          <h3 class="mb-3"> Place Order </h3>
+        </div>
+
+        <!--place order code-->
+        <div class="row">
+          <div class="col-sm-8 card " style="padding: 2%;">
+             <div class="row">
+                  <div class="col-6 form-group" >
+                    <h6 class="text_subtitle">
+                      <span class="icon_order"><i class="fas fa-leaf"></i></span>
+                      Select Product</h6>
+                    <select class="form-control" v-model='new_item'>
+                      <option disabled selected>Select Product</option> 
+                      <option v-for='item in products' v-bind:value="item">{{item.name}}</option>
+                    </select><br>
+                    <input type="number" v-model='new_item_qty' class="form-control" placeholder="Quantity"><br>
+                    <button type='Submit' class="btn btn-primary w-100" v-on:click="addNewProduct()">Add</button>
+                  </div>
+
+                  <div class="col-6 form-group">
+                  <h6 class="text_subtitle">
+                      <span class="icon_order"><i class="fas fa-truck"></i></span>
+                      Payment/Shipping Method</h6>
+                  <input type="date" class="form-control" placeholder="Delivery Date"><br>
+                  <select class="form-control">
+                    <option value="" disabled selected>Select Payment Method</option> 
+                    <option>Card</option>
+                    <option>Cash on Delivery</option>
+                  </select><br>
+                  <select class="form-control">
+                    <option value="" disabled selected>Select Shipping Method</option> 
+                    <option>Card</option>
+                    <option>Cash on Delivery</option>
+                  </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="table-responsive" style="padding: 2%;">
+                <table class="table">
+                  <thead>
+                    <tr class="card-header">
+                      <th scope="col">Product</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Total</th>
+                      <th scope="col" class="text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="order in add_product">
+                      <td data-title="Date:">{{order.name}}</td>
+                      <td data-title="Customer Name:">{{order.quantity}}</td>
+                      <td data-title="Total: "><span>₱</span> {{order.price}}</td>
+                      <td data-title="Total: "><span>₱</span> {{order.total_price}}</td>
+                      <td data-title="Actions:" class="text-right"><a href="#"><span class="material-icons">visibility</span></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h6 style="text-align: right;">Grand Total: <span>₱</span> {{totalCost}}<h6>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="col-sm form-group" style="padding-top: 5%;">
+              <h6 class="text_subtitle">
+                <span class="icon_order"><i class="fas fa-portrait"></i></span> Customer Info</h6>
+              <input type="text" class="form-control" placeholder="First Name">
+              <input type="text" class="form-control margin_top" placeholder="Last Name">
+              <input type="text" class="form-control margin_top" placeholder="Contact">
+              <textarea type="text" class="form-control margin_top" placeholder="Address"></textarea>
+              <select class="form-control margin_top">
+                <option value="" disabled selected>Select City</option> 
+                <option>Baguio</option>
+                <option>Cebu</option>
+              </select>
+              <input type="text" class="form-control margin_top" placeholder="Zip/Postal Code">
+              <button type='Submit' class="btn btn-primary w-100 margin_top">Save</button>
+            </div>
+          </div>
+          </div>
+        </div>
+
+    </div>
+    </div>
+  </main>
+
+</body>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src='./js/vue.js'></script>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        
+        products:[
+          {'id': 1,'name':'Bellpepper', 'price': 20},
+          {'id': 2,'name':'Beans', 'price': 30},
+          {'id': 3,'name':'Cabbage', 'price': 50},
+          {'id': 4,'name':'Carrots', 'price': 20},
+          {'id': 5,'name':'Eggplant', 'price': 25},
+          {'id': 6,'name':'Potato', 'price': 70}
+        ],
+        add_product:[],
+        new_item:{},
+        new_item_qty:''
+
+      },
+      computed:{
+        totalCost(){
+          let grand_total = 0;
+          this.add_product.forEach(p => (grand_total += p.total_price));
+          return grand_total;
+        }
+      },
+      methods: {
+        addNewProduct(){
+        console.log(this.new_item);
+        this.add_product.push({
+          id: this.new_item.id,
+          name: this.new_item.name,
+          price: this.new_item.price,
+          quantity: this.new_item_qty,
+          total_price: this.new_item.price * this.new_item_qty
+          });
+            this.new_item = {};
+            this.new_item_qty = '';
+        }
+      }
+    })
+  </script>
+</html>
